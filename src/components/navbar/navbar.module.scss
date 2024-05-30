@@ -1,0 +1,150 @@
+.navbar{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    background: #FFF;
+    margin-top: 16px;
+    padding: 0 24px;
+    &__logo{
+        height: 48px;
+        background: #fff;
+    }
+    &__links{
+        display: flex;
+        align-items: center;
+        height: 68px;
+        background: transparent;
+   
+    }
+    &__link,&__number{
+        border-radius: 12px;
+        height: 68px;
+        width: 138px;
+        color:  #1D1D1F;
+        font-family: "Inter";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        margin: 6px;
+        display: flex;
+        align-items: center; 
+        justify-content: center;
+        background: #fff;
+        transition: 0.5s;
+    }
+    &__number{
+        width: 222px;
+        gap: 12px;
+        padding: 0 18px;
+        & p{
+            color: #1D1D1F;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            background: transparent;
+            & svg{
+                font-size: 24px;
+                background: transparent;
+            }
+        }
+    }
+    &__flag{
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center;
+        position: relative;
+        border: none;
+        background: transparent;
+        overflow: hidden;
+        height: 100%;
+        width: 138px;
+        margin: 6px;
+       
+
+        &_russia,&_uzbek{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            top: 0;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 3;
+            transition: 0.5s;
+            
+            &.active{
+                top: -100px;
+                z-index: 2;
+            }
+          & img{
+            width: 29px;
+            height: 16px;
+          }  
+          & p{
+            color: #1D1D1F;
+            font-family: "Inter";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px; 
+            background: #fff;
+          }
+        }
+        
+        
+    }
+
+    &__buttons{
+        background: transparent;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        &_btn{
+            border: 1px solid #D2D2D7;
+            border-radius: 12px;
+            background: transparent;
+            width: 56px;
+            height: 56px;
+            transition: 0.5s;
+            &:hover{
+                background:#F5F5F5;
+                border: none;
+                
+                
+            }
+            & svg{
+                font-size: 24px;
+                background: transparent;
+                
+                &:hover{
+                    color: #F63;
+                }
+            }
+        }
+        &_basket{
+            width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #686870;
+            font-family: "Inter";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px; 
+            & span{
+                font-size: 24px;
+            }
+        }
+    }
+}
