@@ -7,9 +7,11 @@ import classNames from "classnames"
 import styles from './navbar.module.scss'
 import { useState } from "react"
 
+
+
 function Navbar() {
   const [flag,setFlag] = useState(false)
-  console.log(flag);
+
   return (
     <div>
       <Container className={styles.navbar__container}>
