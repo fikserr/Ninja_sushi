@@ -6,6 +6,7 @@ import About from './pages/about'
 import News from './pages/news'
 import Footer from './components/footer'
 
+
 function App() {
   return (  
     <Router>
