@@ -1,0 +1,71 @@
+.menu{
+    margin: 19px 0 48px;
+    &__container{
+        display: flex;
+        justify-content: center;
+    }
+
+    &__content{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 784px;
+        height: 83px;
+        padding: 6px 16px;
+        background: white;
+
+    }
+
+    &__box{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+        width: 91px;
+        height: 71px;
+        padding: 6px 19px;
+        background: transparent;
+        & svg{
+            background: transparent;
+            width: 44px;
+            height: 44px;
+        }
+        &:hover{
+            .svg__hover{
+                fill: #FF6633;
+            }
+        
+        }
+        &.active{
+            .svg__hover{
+                fill: #FF6633;
+            }
+            & p{
+                color: #FF6633;
+            }
+        }
+        .svg__position{
+            position: absolute;
+            left: 0px;
+            top: 10px;
+            width: 39.236px;
+
+        }
+
+    
+    }
+    &__txt{
+        color: #1D1D1F;
+        text-align: center;
+        font-family: 'Inter';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px; 
+        background: transparent;
+    }
+}
+
+

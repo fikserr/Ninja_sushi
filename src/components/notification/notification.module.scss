@@ -1,5 +1,5 @@
 .notification{
-    display: block;
+    display: none;
     position: relative;
     top: -98px;
     width: 100%;
@@ -17,14 +17,16 @@
     }
     &__content{
         position: relative;
-        top: 116px;
+        top: -1000px;
         padding: 30px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 12px;
         border-radius: 12px;
         transition: 0.5s;
+        background: white;
         &.active{
             top: 116px;
         }
@@ -33,8 +35,11 @@
         width: 530px;
         display: flex;
         justify-content: space-between;
+        background: white;
+        margin-bottom: 24px;
     }
     &__title{
+        background: white;
         color:  #1D1D1F;
         font-family: 'Inter';
         font-size: 28px;
@@ -54,4 +59,121 @@
 
 
 
+    &__tips{
+        border-radius: 12px;
+        width: 512px;
+        padding: 11px 18px;
+        background: #F5F5F7;
+       
+        &_title{
+            color: #1D1D1F;
+            font-family: 'Inter';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+        }
+        &_content{
+            margin-top: 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            &_title{
+                color: #1D1D1F;
+                font-family: 'Inter';
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 26px;
+                text-align: center;
+                background: transparent;
+            }
+            &_gridNum{
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                grid-gap: 12px;
+                margin-top: 16px;
+                background: white;
+                &_txt,&_btn,& input{
+                    position: relative;
+                    width: 220px;
+                    padding: 12px 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: none;
+                    background:#F5F5F7;
+                    border-radius: 12px;
+                    color: #1D1D1F;
+                    font-family: 'Inter';
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 24px; 
+                    transition: 0.5s;
+                    &:hover{
+                        background: #FF6633;
+                        color: white;
+                    }
+                    & span{
+                        color:  #9E9E9E;
+                        font-family: Inter;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 24px;
+                        background: transparent;
+                        padding-left: 6px;
+                    }
+                    & img{
+                        position: absolute;
+                        top: -5px;
+                        right: -5px;
+                        background: transparent;
+                    }
+                }
+                & input{
+                    padding-left: 16px;
+                    color: var(---3, #9E9E9E);
+                    font-family: 'Inter';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 24px; 
+                }
+                &_btn{
+                    color: #00CC2D;
+                    font-family: 'Inter';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 24px;
+                }
+               
+            }
+        }
+
+
+        &_time{
+            color:  #686870;
+            font-family: 'Inter';
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px; 
+            padding-top: 16px;
+        }
+    }
+
+
+}
+
+
+
+.color{
+    color: #F44837;
 }

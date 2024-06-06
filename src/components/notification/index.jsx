@@ -1,4 +1,8 @@
+import classNames from 'classnames'
 import Container from '../../layout/container'
+import smileOne from '../../images/smile-1.png'
+import smileTwo from '../../images/smile-2.png'
+import smileThree from '../../images/smile-3.png'
 import styles from './notification.module.scss'
 
 function Notification() {
@@ -17,6 +21,48 @@ function Notification() {
                               </svg>
                               </button>
                           </div>
+
+                      <div className={styles.notification__tips}>
+
+                          <h5 className={styles.notification__tips_title}>
+                          Ашот, ваш заказ успешно доставлен! 
+                          </h5>
+
+                          <div className={styles.notification__tips_content}>
+                              <h5 className={styles.notification__tips_content_title}>
+                              Хотите оставить чаевые?
+                              </h5>
+
+                              <div className={styles.notification__tips_content_gridNum}>
+                              <button className={styles.notification__tips_content_gridNum_txt}>20 ₴ <span>(5%)</span> <img src={smileOne} alt="image" /></button>
+                              <button className={styles.notification__tips_content_gridNum_txt}>50 ₴<span>(10%)</span> <img src={smileTwo} alt="image" /></button>
+                              <button className={styles.notification__tips_content_gridNum_txt}>75 ₴<span>(15%)</span> <img src={smileThree} alt="image" /></button>
+                              <input type="text" placeholder='Укажите сумму'/>
+                              <button className={classNames(styles.notification__tips_content_gridNum_btn,styles.color)} >Не оставлять чаевых</button>
+                              <button className={styles.notification__tips_content_gridNum_btn}>Оплатить  75₴ </button>
+                              </div>
+                          </div>
+
+                          <p className={styles.notification__tips_time}>16.02 в 16:40</p>
+                      </div>
+
+                      <div className={styles.notification__tips}>
+                        
+                          <h5 className={styles.notification__tips_title}>
+                          Итальянская полиция обнаружила картину Тициана, исчезнувшую в 2004 году
+                          </h5>
+
+                          <p className={styles.notification__tips_time}>16.02 в 16:40</p>
+                      </div>
+                      <div className={styles.notification__tips}>
+                        
+                          <h5 className={styles.notification__tips_title}>
+                          Итальянская полиция обнаружила картину Тициана, исчезнувшую в 2004 году
+                          </h5>
+
+                          <p className={styles.notification__tips_time}>16.02 в 16:40</p>
+                      </div>
+
                   </div>
           </Container>
       </div>

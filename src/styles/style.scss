@@ -16,3 +16,16 @@ a.active{
     color: #F63;
 }
     
+
+.swiper-pagination{
+    padding-bottom: 25px;
+    background: transparent;
+    .swiper-pagination-bullet{
+        width: 12px;
+        height: 12px;
+        
+    }
+    .swiper-pagination-bullet-active{
+        background:  #F63;
+    }
+}
