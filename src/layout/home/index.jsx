@@ -9,6 +9,7 @@ import Sets from "../../components/sets"
 import SliderSushi from "../../components/sliderSushi"
 import Snacks from "../../components/snacks"
 import Sushi from "../../components/sushi"
+import About from "../../pages/about"
 import Header from "../../pages/header"
 import styles from './home.module.scss'
 
@@ -27,6 +28,7 @@ function Home() {
       <Beverages/>
       <Map/>
       <Program/>
+      <About/>
     </div>
   )
 }
