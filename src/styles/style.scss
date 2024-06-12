@@ -32,3 +32,24 @@ a.active{
         background:  #F63;
     }
 }
+
+.swiper-wrapper{
+    align-items: center;
+}
+
+
+.swiper-button-next,.swiper-button-prev{
+    border-radius: 12px;
+    background:  rgba(39, 39, 39, 0.05);
+    width: 75px;
+    height: 162px;
+    font-size: 39px;
+    color: #1D1D1F;
+}
+.swiper-button-disabled{
+    display: none;
+    &::after{
+        display: none;
+    }
+}
+

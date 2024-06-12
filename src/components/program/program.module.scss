@@ -35,23 +35,10 @@
         line-height: 28px;
         padding-top: 16px; 
         width: 462px;
+        padding-bottom: 40px;
+        
     }
-    &__buttons{
-        display: flex;
-        gap: 12px;
-        padding-top: 40px;
-    }
-    &__btn{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background:  #1D1D1F;
-        border: none;
-        border-radius: 8px;
-        gap: 8px;
-        height: 37px;
-        padding: 7px 9px;
-    }
+    
     &__image{
         position: absolute;
         bottom: 0;
