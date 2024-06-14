@@ -1,5 +1,5 @@
 .basket{
-    display: none;
+    display: flex;
     position: relative;
     top: -98px;
     width: 100%;
@@ -16,18 +16,18 @@
         background: transparent;
     }
     &__content{
+        min-height: 718px;
         position: relative;
-        top: -1000px;
         padding: 30px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         border-radius: 12px;
         transition: 0.5s;
-        &.active{
-            top: 116px;
-        }
+        top: 116px;
+        background: #FFF;
+
+
     }
     &__top{
         width: 530px;
@@ -53,7 +53,7 @@
 
     &__error{
         width: 281px;
-        display: none;
+        display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 150px;

@@ -5,6 +5,8 @@ import Order from './pages/order'
 import About from './pages/about'
 import News from './pages/news'
 import Footer from './components/footer'
+import Contract from './pages/contract'
+import Basket from './components/basket'
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
               <Route path="order" element={<Order/>}/>
               <Route path="about" element={<About/>}/>
               <Route path="news" element={<News/>}/>
+              <Route path='basket' element={<Basket/>}/>
+              <Route path='contract' element={<Contract/>}/>
             </Routes>
           <Footer/>
     </Router>

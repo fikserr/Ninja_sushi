@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Container from "../../layout/container";
 import styles from "./about.module.scss";
 
@@ -13,7 +13,7 @@ function About() {
           рабочего инструмента, расходных материалов и комплект... Теперь –
           есть.
         </p>
-        <Link className={styles.about__link}>
+        <NavLink to='/contract' className={styles.about__link}>
           Читать больше{" "}
           <span>
             <svg
@@ -31,7 +31,7 @@ function About() {
               />
             </svg>
           </span>
-        </Link>
+        </NavLink>
       </div>
     </Container>
   );
