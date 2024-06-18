@@ -2,7 +2,6 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Navbar from "./components/navbar"
 import Home from "./layout/home"
 import Order from './pages/order'
-import About from './pages/about'
 import News from './pages/news'
 import Contract from './pages/contract'
 import Basket from './components/basket'
@@ -32,7 +31,7 @@ function App() {
                 <Route path="souses" element={<Souses/>}/>
               </Route>
               <Route path="order" element={<Order/>}/>
-              <Route path="about" element={<About/>}/>
+              <Route path="about" element={<Contract/>}/>
               <Route path="news" element={<News/>}/>
               <Route path='contract' element={<Contract/>}/>
               <Route path='basket' element={<Basket/>}/>
