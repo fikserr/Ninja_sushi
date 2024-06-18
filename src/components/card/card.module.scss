@@ -1,0 +1,112 @@
+.card{
+    padding: 24px;
+    width: 380px;
+
+    border-radius: 12px;
+    background: #FFF;
+
+    &__images{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+
+        &_txt{
+            display: flex;
+            gap: 6px;
+
+        }
+        &_hit,&_new{
+            padding: 6px 10px;
+            border-radius: 8px;
+            background:  #FBDCD5;
+            color:  #F63;
+            font-family: Inter;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+        }
+        &_new{
+        background: #CCF5D5;
+        color: #00CC2D;
+        }
+
+        &_svgs{
+            display: flex;
+            gap: 8px;
+        }
+    }
+
+
+    &__content{
+        &_name{
+            color:  #1D1D1F;
+            font-family: 'Inter';
+            font-size: 27px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 32px; 
+            padding: 12px 0;
+        }
+
+        &_gram{
+            color: #F63;
+            font-family: 'Inter';
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 26px; 
+            padding-bottom: 8px;
+        }
+        &_incredients{
+            width: 100%;
+            color:  #686870;
+            font-family: 'Inter';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            padding-bottom: 72px;
+        }
+    }
+
+    &__bottom{
+        display: flex;
+        justify-content: space-between;
+
+        &_price{
+            color: #1D1D1F;
+            font-family: 'Inter';
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 32px; 
+            & span{
+                color:#686870;
+                font-family: "Inter";
+                font-size: 26px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+        }
+
+        & div{
+            display: flex;
+            gap: 12px;  
+        }
+
+        &_like{
+            padding: 12px;
+            border-radius: 12px;
+            background: #F5F5F7;
+            border: none;
+        }
+        &_firstplus{
+            border-radius: 12px;
+            background:  #CCF5D5;
+            padding: 10px 24px;
+            border: none;
+        }
+    }
+}

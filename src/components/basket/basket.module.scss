@@ -16,8 +16,7 @@
         background: transparent;
     }
     &__content{
-        min-height: 718px;
-        position: relative;
+        position: absolute;
         padding: 30px;
         display: flex;
         flex-direction: column;
@@ -26,8 +25,8 @@
         transition: 0.5s;
         top: 116px;
         background: #FFF;
-
-
+        z-index: 2;
+        animation: upper 0.5s linear ;
     }
     &__top{
         width: 530px;
@@ -46,6 +45,7 @@
         border-radius: 8px;
         background:#F5F5F7;
         padding: 6px;
+        border: none;
         & svg{
             font-size: 21px;
         }
@@ -101,4 +101,15 @@
         }
     }
 
+}
+
+
+@keyframes upper {
+    0%{
+        top: -1000px;
+        
+    }
+    100%{
+        top: 116px;
+    }
 }

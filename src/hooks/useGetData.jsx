@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 function useGetData() {
     const [data,setData] = useState(null)
     const [error,setError] = useState('')
-    console.log(data);
         function getData() {
             
             fetch('../../data.json')

@@ -13,6 +13,9 @@
         height: 83px;
         padding: 6px 16px;
         background: white;
+        position: fixed;
+        z-index: 999;
+        border-radius: 12px;
 
     }
 
@@ -27,6 +30,7 @@
         height: 71px;
         padding: 6px 19px;
         background: transparent;
+        border: none;
         & svg{
             background: transparent;
             width: 44px;

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Container from "../../layout/container";
 import styles from "./menu.module.scss";
 
@@ -6,7 +7,7 @@ function Menu() {
     <div className={styles.menu}>
       <Container className={styles.menu__container}>
         <div className={styles.menu__content}>
-          <div className={styles.menu__box}>
+          <NavLink to="/rolls" className={styles.menu__box}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="31"
@@ -33,8 +34,8 @@ function Menu() {
               />
             </svg>
             <p className={styles.menu__txt}>Роллы</p>
-          </div>
-          <div className={styles.menu__box}>
+          </NavLink>
+          <NavLink to="/sushi" className={styles.menu__box}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="45"
@@ -61,8 +62,8 @@ function Menu() {
               />
             </svg>
             <p className={styles.menu__txt}>Суши</p>
-          </div>
-          <div className={styles.menu__box}>
+          </NavLink>
+          <NavLink to="/sets" className={styles.menu__box}>
                 
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -117,8 +118,8 @@ function Menu() {
             </svg>
         
             <p className={styles.menu__txt}>Сеты</p>
-          </div>
-          <div className={styles.menu__box}>
+          </NavLink>
+          <NavLink to="/snacks" className={styles.menu__box}>
             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 45 28" fill="none">
             <path className={styles.svg__hover} d="M17 7.8125C17 5.15463 14.8454 3 12.1875 3C9.52963 3 7.375 5.15463 7.375 7.8125" fill="#9E9E9E"/>
             <path className={styles.svg__hover} d="M37.625 7.8125C37.625 5.15463 35.4704 3 32.8125 3C30.1546 3 28 5.15463 28 7.8125" fill="#9E9E9E"/>
@@ -132,8 +133,8 @@ function Menu() {
             <path className={styles.svg__hover} d="M11.5 20.875C11.5 21.6344 10.8844 22.25 10.125 22.25C9.36561 22.25 8.75 21.6344 8.75 20.875C8.75 20.1156 9.36561 19.5 10.125 19.5C10.8844 19.5 11.5 20.1156 11.5 20.875Z" fill="#9E9E9E"/>
             </svg>
             <p className={styles.menu__txt}>Боулы</p>
-          </div>
-          <div className={styles.menu__box}>
+          </NavLink>
+          <NavLink to="/beverages" className={styles.menu__box}>
           <svg xmlns="http://www.w3.org/2000/svg" width="45" height="44" viewBox="0 0 45 44" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.1299 14.4581C12.3196 14.2461 12.5906 14.125 12.875 14.125H32.125C32.4094 14.125 32.6804 14.2461 32.8701 14.4581C33.0598 14.67 33.1503 14.9527 33.1189 15.2354L30.3689 39.9854C30.3126 40.4919 29.8846 40.875 29.375 40.875H15.625C15.1155 40.875 14.6874 40.4919 14.6311 39.9854L11.8811 15.2354C11.8497 14.9527 11.9402 14.67 12.1299 14.4581ZM13.9923 16.125L16.52 38.875H28.48L31.0077 16.125H13.9923Z" fill="#86868B"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M9.125 8.25C9.125 7.69772 9.57272 7.25 10.125 7.25H34.875C35.4273 7.25 35.875 7.69772 35.875 8.25V15.125C35.875 15.6773 35.4273 16.125 34.875 16.125H10.125C9.57272 16.125 9.125 15.6773 9.125 15.125V8.25ZM11.125 9.25V14.125H33.875V9.25H11.125Z" fill="#86868B"/>
@@ -141,8 +142,8 @@ function Menu() {
             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9051 1.1327C12.039 0.596906 12.582 0.271145 13.1178 0.405094L18.6178 1.78009C18.901 1.8509 19.1391 2.04192 19.2697 2.30302L22.0197 7.80302C22.2667 8.297 22.0664 8.89767 21.5724 9.14466C21.0785 9.39165 20.4778 9.19143 20.2308 8.69745L17.6865 3.60883L12.6327 2.34538C12.0969 2.21143 11.7711 1.6685 11.9051 1.1327Z" fill="#86868B"/>
             </svg>
             <p className={styles.menu__txt}>Напитки</p>
-          </div>
-          <div className={styles.menu__box}>
+          </NavLink>
+          <NavLink to="/souses" className={styles.menu__box}>
           <svg xmlns="http://www.w3.org/2000/svg" width="33" height="41" viewBox="0 0 33 41" fill="none">
             <path className={styles.svg__hover} d="M12.4007 6.95703V8.69143C12.4007 9.22509 10.9553 10.2035 8.55384 10.2035C6.15236 10.2035 4.70703 9.22509 4.70703 8.69143V6.95703C5.72988 7.46846 7.0418 7.77976 8.55384 7.77976C10.0659 7.802 11.4 7.49069 12.4007 6.95703Z" fill="#9E9E9E"/>
             <path d="M17.1321 11.1807H15.1309V18.5852H17.1321V11.1807Z" fill="#86868B"/>
@@ -157,8 +158,8 @@ function Menu() {
             <path className={styles.svg__hover} d="M28.7877 27.7028C26.831 29.5706 22.784 30.8825 18.2034 30.8825C13.6228 30.8825 9.5759 29.5706 7.61914 27.6806C9.04224 25.7905 13.0002 24.1006 18.2034 24.1006C23.4289 24.1228 27.3869 25.7905 28.7877 27.7028Z" fill="#9E9E9E"/>
             </svg>
             <p className={styles.menu__txt}>Соусы</p>
-          </div>
-          <div className={styles.menu__box}>
+          </NavLink>
+          <div  className={styles.menu__box}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="45"

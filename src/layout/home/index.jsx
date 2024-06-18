@@ -1,4 +1,5 @@
 import Beverages from "../../components/beverages"
+import Footer from "../../components/footer"
 import Map from "../../components/map"
 import Menu from "../../components/menu"
 import Program from "../../components/program"
@@ -25,6 +26,7 @@ function Home() {
       <Map/>
       <Program/>
       <About/>
+      <Footer/>
     </div>
   )
 }
