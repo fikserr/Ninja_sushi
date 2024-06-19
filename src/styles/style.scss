@@ -47,8 +47,8 @@ a.active{
 }
 .swiper-button-disabled{
     display: none;
-    &::after{
-        display: none;
-    }
+        &::after{
+            display: none;
+        }
 }
 

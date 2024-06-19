@@ -2,21 +2,22 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 
 export const getData = createAsyncThunk('getData', async ()=>{
-
-         const data = await fetch('../../data.json')
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${import.meta.env.VITE_DB_TOKEN}`
+        }
+        };   
+         const data = await fetch('https://fayzullaev99.github.io/sushi-data/data.json',options)
          return data.json()
 
 })
 
 
 const initialState = {
-    upcomingMovies:null,
-    upcomingSeries:null,
-    popularMovies:null,
-    popularSeries:null,
-    rating:null,
-    search:null,
-
+    news: null,
+    products:null
 }
 
 const dataSlice = createSlice(
@@ -25,7 +26,7 @@ const dataSlice = createSlice(
         initialState:initialState,
         extraReducers:(builder)=>{
             builder.addCase(getData.fulfilled, (state, action)=>{
-                state.upcomingMovies = action.payload
+                state.news = action.payload
             })
         }
     }

@@ -1,13 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useGetData from '../../hooks/useGetData'
 import styles from './sushi.module.scss'
 import Error from '../../pages/error'
 import Container from '../../layout/container'
 import Card from '../card'
+import { useDispatch, useSelector } from 'react-redux'
+import { getData } from '../../store/dataSlice'
 
 function Sushi() {
+  const dispatch = useDispatch()
+  const {news} = useSelector(state => state.data)
   const [data] = useGetData()
   const [seeAll,setSeeAll] = useState(93)
+  console.log(news);
+  useEffect(()=>{
+    dispatch(getData([news]))
+  })
   if (!data ) return <Error/>
   return (
     <div className={styles.sushi}>
