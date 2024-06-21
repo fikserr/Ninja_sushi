@@ -1,14 +1,20 @@
-import { useState } from 'react'
-import useGetData from '../../hooks/useGetData'
+import { useEffect, useState } from 'react'
 import Error from '../../pages/error'
 import Container from '../../layout/container'
 import Card from '../card'
 import styles from './souses.module.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { getData } from '../../store/dataSlice'
 
 function Souses() {
-    const [data] = useGetData()
+  const dispatch = useDispatch();
+  const {products} = useSelector(state => state.data);
     const [seeAll,setSeeAll] = useState(120)
-    if (!data ) return <Error/>
+    useEffect(() => {
+      dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
+    }, [dispatch]);
+  
+    if (!products) return <Error />;
     return (
       <div className={styles.souses}>
         <Container className={styles.souses__container}>
@@ -23,7 +29,7 @@ function Souses() {
   
   
              {
-                data.products.slice(113,seeAll).map((item) => (
+                products.slice(113,seeAll).map((item) => (
                     <Card key={item.id} data={item}/>
                 ))
               } 

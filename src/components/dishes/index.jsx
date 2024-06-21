@@ -1,14 +1,20 @@
-import { useState } from 'react'
-import useGetData from '../../hooks/useGetData'
+import { useEffect, useState } from 'react'
 import styles from './dishes.module.scss'
 import Error from '../../pages/error'
 import Container from '../../layout/container'
 import Card from '../card'
+import { getData } from '../../store/dataSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Dishes() {
-    const [data] = useGetData()
+  const dispatch = useDispatch();
+  const {products} = useSelector(state => state.data);
     const [seeAll,setSeeAll] = useState(153)
-    if (!data ) return <Error/>
+    useEffect(() => {
+      dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
+    }, [dispatch]);
+  
+    if (!products) return <Error />;
     return (
       <div className={styles.dishes}>
         <Container className={styles.dishes__container}>
@@ -23,7 +29,7 @@ function Dishes() {
   
   
              {
-                data.products.slice(145,seeAll).map((item) => (
+                products.slice(145,seeAll).map((item) => (
                     <Card key={item.id} data={item}/>
                 ))
               } 

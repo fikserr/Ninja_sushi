@@ -9,7 +9,6 @@ function Sets() {
   const [data] = useGetData()
   const [seeAll,setSeeAll] = useState(8)
   if (!data ) return <Error/>
-  console.log(data);
   return (
     <div className={styles.sets}>
       <Container className={styles.sets__container}>
