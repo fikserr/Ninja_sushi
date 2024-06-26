@@ -1,10 +1,13 @@
 import styles from './map.module.scss'
 import map from '../../images/map.png'
 
+
 function Map() {
+
+
   return (
     <div className={styles.map}>
-      <h1 className={styles.map__title}>Каждая кухня работает со своей зоной доставки, чтобы привезти еду максимально быстро</h1>
+      <h1 className={styles.map__title}></h1>
           <div className={styles.map__deliver}>
               <div className={styles.map__deliver_content}>
                 <div className={styles.map__deliver_content_green}></div>

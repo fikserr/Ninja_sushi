@@ -1,19 +1,42 @@
+import { useEffect, useState } from "react";
 import Error from "../../pages/error";
 import styles from "./card.module.scss";
+import classNames from "classnames";
 
 function Card({ data }) {
-  if (!data) return <Error/>
+
+  const [pepper, setPepper] = useState(false);
+  const [blackmarks, setBlackmarks] = useState(false);
+  const [vegetarian, setVegetarian] = useState(false);
+  const statusHit = data.status?.filter(item => item == 'hit');
+  const statusNew = data.status?.filter(item => item == 'new')
   const word = data.incredients?.join(', ')
+
+  useEffect(() => {
+    if (data.catalog?.some(ingredient => ingredient === 'Острые')) {
+      setPepper(!pepper);
+    }
+    if (data.catalog?.some(ingredient => ingredient === 'Безлактозные')) {
+      setBlackmarks(!blackmarks);
+    }
+    if (data.catalog?.some(ingredient => ingredient === 'Вегетарианские')) {
+      setVegetarian(!vegetarian);
+    }
+
+    
+  }, [data.catalog]);
+   if (!data) return <Error/>
+
   return (
     <div className={styles.card}>
       <div className={styles.card__images}>
         <div className={styles.card__images_txt}>
-          <p className={styles.card__images_hit}>Hit</p>
-          <p className={styles.card__images_new}>New</p>
+          <p className={classNames(styles.card__images_hit, statusHit == "hit" ? styles.active : "")}>{statusHit}</p>
+          <p className={classNames(styles.card__images_new, statusNew == "new" ? styles.active : "")}>{statusNew}</p>
         </div>
         <img src={data?.images} alt={data?.name} className={styles.card__images_img} />
         <div className={styles.card__images_svgs}>
-          <svg
+          <svg className={pepper ? styles.active : ""}
             xmlns="http://www.w3.org/2000/svg"
             width="27"
             height="26"
@@ -25,7 +48,7 @@ function Card({ data }) {
               fill="#FF6633"
             />
           </svg>
-          <svg
+          <svg className={blackmarks ? styles.active : ""}
             xmlns="http://www.w3.org/2000/svg"
             width="27"
             height="26"
@@ -37,7 +60,7 @@ function Card({ data }) {
               fill="#84C502"
             />
           </svg>
-          <svg
+          <svg className={vegetarian ? styles.active : ""}
             xmlns="http://www.w3.org/2000/svg"
             width="15"
             height="24"

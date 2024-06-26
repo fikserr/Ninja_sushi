@@ -13,7 +13,7 @@ function About() {
           рабочего инструмента, расходных материалов и комплект... Теперь –
           есть.
         </p>
-        <NavLink to='/contract' className={styles.about__link}>
+        <NavLink to='/about' className={styles.about__link}>
           Читать больше{" "}
           <span>
             <svg
