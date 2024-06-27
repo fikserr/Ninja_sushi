@@ -6,6 +6,12 @@
     padding-top: 88px;
     background: white;
     margin-top: 124px;
+    &.active{
+        background: none;
+        margin-top: 0;
+        margin-bottom: 124px;
+
+    }
     &__title{
         color:#1D1D1F;
         text-align: center;

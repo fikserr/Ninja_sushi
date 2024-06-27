@@ -2,6 +2,9 @@
 
     padding: 64px 0px;
     background: white;
+    &.active{
+        background:  #F5F5F7;
+    }
     &__container{
         width: 100%;
         height: 100%;

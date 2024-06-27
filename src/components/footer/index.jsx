@@ -2,10 +2,11 @@ import Container from "../../layout/container";
 import logo from "../../images/logo.png";
 import Buttons from "../../ui/buttons";
 import styles from "./footer.module.scss";
+import classNames from "classnames";
 
 function Footer() {
   return (
-    <div className={styles.footer}>
+    <div className={classNames( styles.footer,location.pathname == '/order' ? styles.active : "")}>
       <Container className={styles.footer__container}>
         <div className={styles.footer__content}>
           <div className={styles.footer__left}>
