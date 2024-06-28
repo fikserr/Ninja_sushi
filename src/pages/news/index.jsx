@@ -3,7 +3,9 @@ import styles from './news.module.scss'
 import { useEffect } from 'react';
 import { getData } from '../../store/dataSlice';
 import Container from '../../layout/container';
+import noImage from '../../images/noimage.jpg'
 import Error from '../error';
+
 
 function News() {
   const dispatch = useDispatch();
@@ -25,7 +27,6 @@ function News() {
             <button className={styles.news__btn}>SushiKino</button>
           </div>
 
-
           <div className={styles.news__search}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M11 4C7.13401 4 4 7.13401 4 11C4 14.866 7.13401 18 11 18C14.866 18 18 14.866 18 11C18 7.13401 14.866 4 11 4ZM2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 15.9706 15.9706 20 11 20C6.02944 20 2 15.9706 2 11Z" fill="#686870" />
@@ -40,8 +41,8 @@ function News() {
           {
             news.map((item)=>(
               <div className={styles.news__images} key={item.id}>
-                  <img src={item.images} alt={item.name}  className={styles.news__image}/>
-                  <h2 className={styles.news__images_title}>{item.name}</h2>
+                  <img src={item.images == item.images ? item.images : noImage} alt={item.name}  className={styles.news__image}/>
+                    <h2 className={styles.news__images_title}>{item.name}</h2>
                   <div>
                       <button className={styles.news__images_detail}>Подробнее</button>
                       <p className={styles.news__images_date}>{item.date}</p>
