@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import styles from './dishes.module.scss'
-import Error from '../../pages/error'
 import Container from '../../layout/container'
 import Card from '../card'
 import { getData } from '../../store/dataSlice'
@@ -13,8 +12,6 @@ function Dishes() {
     useEffect(() => {
       dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
     }, [dispatch]);
-  
-    if (!products) return <Error />;
     return (
       <div className={styles.dishes}>
         <Container className={styles.dishes__container}>
@@ -29,7 +26,7 @@ function Dishes() {
   
   
              {
-                products.slice(145,seeAll).map((item) => (
+                products?.slice(145,seeAll).map((item) => (
                     <Card key={item.id} data={item}/>
                 ))
               } 

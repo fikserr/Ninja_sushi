@@ -27,8 +27,8 @@ const dataSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getData.fulfilled, (state, action) => {
-                state.news = action.payload.news; // payload tarkibini news deb faraz qilaylik
-                state.products = action.payload.products; // payload tarkibini products deb faraz qilaylik
+                state.news = action.payload.news; 
+                state.products = action.payload.products; 
             })
             .addCase(getData.rejected, (state, action) => {
                 state.error = action.error.message;

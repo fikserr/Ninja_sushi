@@ -2,8 +2,17 @@ import { Link } from 'react-router-dom'
 import Container from '../../layout/container'
 import errorImage from '../../images/error.png'
 import styles from './error.module.scss'
+import { useEffect } from 'react';
+import { getData } from '../../store/dataSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Error() {
+  const dispatch = useDispatch();
+  const {error} = useSelector(state => state.data);
+  console.log(error);
+    useEffect(() => {
+      dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
+    }, [dispatch]);
   return (
     <div className={styles.error}>
       <Container className={styles.error__conatiner}>

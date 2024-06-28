@@ -3,12 +3,11 @@ import useGetData from '../../hooks/useGetData'
 import Container from '../../layout/container';
 import Card from '../card';
 import styles from './sets.module.scss'
-import Error from '../../pages/error';
+
 
 function Sets() {
   const [data] = useGetData()
   const [seeAll,setSeeAll] = useState(8)
-  if (!data ) return <Error/>
   return (
     <div className={styles.sets}>
       <Container className={styles.sets__container}>
@@ -23,7 +22,7 @@ function Sets() {
 
 
            {
-              data.products.slice(0,seeAll).map((item) => (
+              data?.products.slice(0,seeAll).map((item) => (
                   <Card key={item.id} data={item}/>
               ))
             } 

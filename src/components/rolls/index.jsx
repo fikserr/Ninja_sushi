@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Container from '../../layout/container';
 import styles from './rolls.module.scss'
 import Card from '../card';
-import Error from '../../pages/error';
 import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '../../store/dataSlice';
 
@@ -14,7 +13,6 @@ function Rolls() {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
   }, [dispatch]);
 
-  if (!products) return <Error />;
   return (
     <div className={styles.rolls}>
       <Container className={styles.rolls__container}>
@@ -29,7 +27,7 @@ function Rolls() {
 
 
            {
-              products.slice(26,seeAll).map((item) => (
+              products?.slice(26,seeAll).map((item) => (
                   <Card key={item.id} data={item}/>
               ))
             } 

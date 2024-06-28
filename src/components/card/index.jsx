@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Error from "../../pages/error";
 import styles from "./card.module.scss";
 import classNames from "classnames";
 
@@ -22,10 +21,8 @@ function Card({ data }) {
     if (data.catalog?.some(ingredient => ingredient === 'Вегетарианские')) {
       setVegetarian(!vegetarian);
     }
-
-    
   }, [data.catalog]);
-   if (!data) return <Error/>
+
 
   return (
     <div className={styles.card}>

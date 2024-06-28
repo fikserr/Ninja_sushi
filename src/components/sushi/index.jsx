@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import styles from './sushi.module.scss';
-import Error from '../../pages/error';
 import Container from '../../layout/container';
 import Card from '../card';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,8 +13,6 @@ function Sushi() {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
   }, [dispatch]);
 
-  if (!products) return <Error />;
-
   return (
     <div className={styles.sushi}>
       <Container className={styles.sushi__container}>
@@ -25,7 +22,7 @@ function Sushi() {
         </div>
         <div className={styles.sushi__cards}>
           {
-            products.slice(85, seeAll).map((item) => (
+            products?.slice(85, seeAll).map((item) => (
               <Card key={item.id} data={item} />
             ))
           }

@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react"
-import useGetData from "../../hooks/useGetData"
-import Error from "../../pages/error"
 import Container from "../../layout/container"
 import Card from "../card"
 import styles from './snacks.module.scss'
@@ -14,7 +12,6 @@ function Snacks() {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
   }, [dispatch]);
 
-  if (!products) return <Error />;
   return (
     <div className={styles.snacks}>
       <Container className={styles.snacks__container}>
@@ -29,7 +26,7 @@ function Snacks() {
 
 
            {
-              products.slice(97,seeAll).map((item) => (
+              products?.slice(97,seeAll).map((item) => (
                   <Card key={item.id} data={item}/>
               ))
             } 
