@@ -4,15 +4,20 @@ import styles from './rolls.module.scss'
 import Card from '../card';
 import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '../../store/dataSlice';
+import { useNavigate } from 'react-router';
 
 function Rolls() {
   const dispatch = useDispatch();
-  const {products} = useSelector(state => state.data);
-  const [seeAll,setSeeAll] = useState(34)
+  const {products,error} = useSelector(state => state.data);
+  const [seeAll, setSeeAll] = useState(34);
+  const navigate = useNavigate()
+
   useEffect(() => {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
-  }, [dispatch]);
+  }, [dispatch,error]);
+  
 
+  if (error || !products) return navigate('/error');
   return (
     <div className={styles.rolls}>
       <Container className={styles.rolls__container}>

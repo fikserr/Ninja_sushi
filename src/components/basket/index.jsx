@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import Container from '../../layout/container'
 import styles from './basket.module.scss'
+import { useSelector } from 'react-redux'
 
 function Basket() {
+  const {basket} = useSelector(state => state.data)
+  console.log(basket);
   return (
     <div className={styles.basket}>
         <Container className={styles.basket__container}>

@@ -4,14 +4,20 @@ import Container from '../../layout/container'
 import Card from '../card'
 import { getData } from '../../store/dataSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 function Dishes() {
   const dispatch = useDispatch();
-  const {products} = useSelector(state => state.data);
-    const [seeAll,setSeeAll] = useState(153)
-    useEffect(() => {
-      dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
-    }, [dispatch]);
+  const {products,error} = useSelector(state => state.data);
+  const [seeAll, setSeeAll] = useState(153);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
+  }, [dispatch,error]);
+  
+
+  if (error || !products) return navigate('/error');
     return (
       <div className={styles.dishes}>
         <Container className={styles.dishes__container}>

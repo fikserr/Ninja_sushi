@@ -4,15 +4,20 @@ import Card from '../card'
 import styles from './souses.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../../store/dataSlice'
+import { useNavigate } from 'react-router'
 
 function Souses() {
   const dispatch = useDispatch();
-  const {products} = useSelector(state => state.data);
-    const [seeAll,setSeeAll] = useState(120)
-    useEffect(() => {
-      dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
-    }, [dispatch]);
+  const {products,error} = useSelector(state => state.data);
+  const [seeAll, setSeeAll] = useState(120);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
+  }, [dispatch,error]);
   
+
+  if (error || !products) return navigate('/error');
     return (
       <div className={styles.souses}>
         <Container className={styles.souses__container}>

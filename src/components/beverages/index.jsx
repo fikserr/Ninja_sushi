@@ -1,12 +1,23 @@
-import { useState } from 'react'
-import useGetData from '../../hooks/useGetData'
+import { useEffect, useState } from 'react'
 import styles from './beverages.module.scss'
 import Container from '../../layout/container'
 import Card from '../card'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
+import { getData } from '../../store/dataSlice'
 
 function Beverages() {
-  const [data] = useGetData()
-  const [seeAll,setSeeAll] = useState(129)
+  const dispatch = useDispatch();
+  const {products,error} = useSelector(state => state.data);
+  const [seeAll, setSeeAll] = useState(129);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
+  }, [dispatch,error]);
+  
+
+  if (error || !products) return navigate('/error');
   return (
     <div className={styles.beverages}>
       <Container className={styles.beverages__container}>
@@ -21,7 +32,7 @@ function Beverages() {
 
 
            {
-              data?.products.slice(121,seeAll).map((item) => (
+              products.slice(121,seeAll).map((item) => (
                   <Card key={item.id} data={item}/>
               ))
             } 

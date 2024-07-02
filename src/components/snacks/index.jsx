@@ -4,13 +4,19 @@ import Card from "../card"
 import styles from './snacks.module.scss'
 import { getData } from "../../store/dataSlice"
 import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router"
 function Snacks() {
   const dispatch = useDispatch();
-  const {products} = useSelector(state => state.data);
-  const [seeAll,setSeeAll] = useState(105)
+  const {products,error} = useSelector(state => state.data);
+  const [seeAll, setSeeAll] = useState(105);
+  const navigate = useNavigate()
+
   useEffect(() => {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
-  }, [dispatch]);
+  }, [dispatch,error]);
+  
+
+  if (error || !products) return navigate('/error');
 
   return (
     <div className={styles.snacks}>

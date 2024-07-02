@@ -14,12 +14,16 @@ import Beverages from './components/beverages'
 import Sets from './components/sets'
 import Souses from './components/souses'
 import Error from './pages/error'
+import Scroll from './Scroll'
+
 
 
 function App() {
+
   return (  
     <Router>
-          <Navbar/>
+    <Scroll/>
+    <Navbar/>
             <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/" element={<HomeMenu/>}>
@@ -38,6 +42,7 @@ function App() {
               <Route path='notification' element={<Notification/>}/>
               <Route path='error' element={<Error/>}/>
             </Routes>
+          
 
     </Router>
   )
