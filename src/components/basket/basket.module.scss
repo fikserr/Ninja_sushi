@@ -1,9 +1,9 @@
 .basket{
     display: flex;
-    position: relative;
+    position:  absolute;
     top: -98px;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh + 98px);
     background: rgba(26, 26, 26, 0.40);
     z-index: 1;
     &.active{
@@ -23,7 +23,7 @@
         align-items: center;
         border-radius: 12px;
         transition: 0.5s;
-        top: 116px;
+        top: 216px;
         background: #FFF;
         z-index: 2;
         animation: upper 0.5s linear ;

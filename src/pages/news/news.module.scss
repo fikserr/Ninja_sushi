@@ -1,9 +1,9 @@
 .news{
-
+    
     &__container{
         display: flex;
         flex-direction: column;
-
+        padding-bottom: 100px;
     }
     &__title{
         padding-top: 32px;

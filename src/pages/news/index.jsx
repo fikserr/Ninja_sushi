@@ -5,6 +5,7 @@ import { getData } from '../../store/dataSlice';
 import Container from '../../layout/container';
 import noImage from '../../images/noimage.jpg'
 import Error from '../error';
+import Footer from '../../components/footer';
 
 
 function News() {
@@ -41,7 +42,7 @@ function News() {
           {
             news.map((item)=>(
               <div className={styles.news__images} key={item.id}>
-                  <img src={item.images == item.images ? item.images : noImage} alt={item.name}  className={styles.news__image}/>
+                  <img src={!item.images ? noImage : item.images} alt={item.name}  className={styles.news__image}/>
                     <h2 className={styles.news__images_title}>{item.name}</h2>
                   <div>
                       <button className={styles.news__images_detail}>Подробнее</button>
@@ -61,7 +62,10 @@ function News() {
 
 
 
+      <Footer/>
     </div>
+
+    
   )
 }
 

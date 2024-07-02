@@ -13,12 +13,12 @@ import Snacks from './components/snacks'
 import Beverages from './components/beverages'
 import Sets from './components/sets'
 import Souses from './components/souses'
+import Error from './pages/error'
 
 
 function App() {
   return (  
     <Router>
-
           <Navbar/>
             <Routes>
               <Route path="/" element={<Home/>}/>
@@ -36,6 +36,7 @@ function App() {
               <Route path='contract' element={<Contract/>}/>
               <Route path='basket' element={<Basket/>}/>
               <Route path='notification' element={<Notification/>}/>
+              <Route path='error' element={<Error/>}/>
             </Routes>
 
     </Router>
