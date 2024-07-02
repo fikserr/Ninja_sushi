@@ -22,7 +22,6 @@ const initialState = {
     news: null,
     products: null,
     error: null,
-    basket: [],
 };
 
 const dataSlice = createSlice({
@@ -34,10 +33,6 @@ const dataSlice = createSlice({
             .addCase(getData.fulfilled, (state, action) => {
                 state.news = action.payload.news;
                 state.products = action.payload.products;
-                // Update basket based on payload or any other logic
-                if (action.payload.id) {
-                    state.basket = state.products.filter(item => item.id === action.payload.id);
-                }
             })
             .addCase(getData.rejected, (state, action) => {
                 state.error = action.error.message;
