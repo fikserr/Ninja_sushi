@@ -6,12 +6,12 @@ import Container from '../../layout/container';
 import noImage from '../../images/noimage.jpg'
 import Error from '../error';
 import Footer from '../../components/footer';
+import classNames from 'classnames';
 
 
 function News() {
   const dispatch = useDispatch();
   const { news } = useSelector(state => state.data);
-  console.log(news);
   useEffect(() => {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
   }, [dispatch]);
@@ -40,9 +40,9 @@ function News() {
 
         <div className={styles.news__content}>
           {
-            news.map((item)=>(
-              <div className={styles.news__images} key={item.id}>
-                  <img src={!item.images ? noImage : item.images} alt={item.name}  className={styles.news__image}/>
+            news.slice(0,10).map((item)=>(
+              <div className={classNames(item.id == 201 || item.id == 202 ? styles.news__big_images : styles.news__images)} key={item.id}>
+                  <img src={!item.images ? noImage : item.images} alt={item.name}  className={classNames(item.id == 201 || item.id == 202 ? styles.news__big_image : styles.news__image)}/>
                     <h2 className={styles.news__images_title}>{item.name}</h2>
                   <div>
                       <button className={styles.news__images_detail}>Подробнее</button>

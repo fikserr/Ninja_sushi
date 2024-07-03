@@ -1,18 +1,20 @@
 // store/dataSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-const dataSlice = createSlice({
+const basketSlice = createSlice({
   name: 'basket',
   initialState: {
-    products: null,
+    basket: [],
   },
   reducers: {
+    
     setProducts(state, action) {
-      state.products = action.payload;
+      console.log(state.basket);
+      state.basket = action.payload.id;
     },
   },
 });
 
-export const { setProducts } = dataSlice.actions;
+export const { setProducts } = basketSlice.actions;
 
-export default dataSlice.reducer;
+export default basketSlice.reducer;

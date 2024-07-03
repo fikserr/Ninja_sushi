@@ -1,5 +1,4 @@
 .news{
-    
     &__container{
         display: flex;
         flex-direction: column;
@@ -60,17 +59,19 @@
     }
     &__content{
         display: grid;
-        grid-template-columns: repeat(2,1fr );
+        grid-template-columns: repeat(4,1fr );
         grid-gap: 22px;
         padding-top: 24px;
     }
 
-    &__images{
-        height: 586px;
-        width: 778px;
+   
+    &__images,&__big_images{
+        height: 345px;
+        width: 379px;
         border-radius: 16px;
         background:  #FFF;
         overflow: hidden;
+        
         &_title{
             padding-top: 16px;
             padding-left: 16px;
@@ -106,10 +107,22 @@
             line-height: 20px; 
         }
     }
+    &__big_images{
+        height: 566px;
+        width: 778px;
+        grid-column: 1 / span 2;
+        grid-column-start: auto;
+        }
 
     &__image{
         width: 100%;
-        height: 486px;
+        height: 201px;
+        object-fit: cover;
+        object-position: center;
+    }
+    &__big_image{
+        width: 100%;
+        height: 446px;
         object-fit: cover;
         object-position: center;
     }

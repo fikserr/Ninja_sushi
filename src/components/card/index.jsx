@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "./card.module.scss";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../../store/dataSlice";
 
 
 function Card({ data }) {
-  const {basket } = useSelector(state => state.data)
+  const {basket } = useSelector(state => state.basketData)
   const dispatch = useDispatch()
   const [pepper, setPepper] = useState(false);
   const [blackmarks, setBlackmarks] = useState(false);
@@ -14,9 +13,9 @@ function Card({ data }) {
   const statusHit = data.status?.filter(item => item == 'hit');
   const statusNew = data.status?.filter(item => item == 'new')
   const word = data.incredients?.join(', ')
-  
+    console.log(basket);
   function sendData(e) {
-    dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json',e))
+    dispatch({payload:e})
   }
 
   useEffect(() => {
