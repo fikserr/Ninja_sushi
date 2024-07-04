@@ -14,9 +14,8 @@ function Card({ data }) {
   const statusNew = data.status?.filter(item => item == 'new')
   const word = data.incredients?.join(', ')
   
-  const handleCardData = (el) => {
-    dispatch(setProducts(el));
-};
+  const handleCardData = (el) => dispatch(setProducts(el));
+
 
   useEffect(() => {
     if (data.catalog?.some(ingredient => ingredient === 'Острые')) {

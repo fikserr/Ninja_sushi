@@ -13,9 +13,12 @@ const basketSlice = createSlice({
     setProducts(state, action) {
       state.basket.push({...action.payload,quanity:1,like:false})
     },
+    deleteProducts(state,action){
+
+    },
   },
 });
 
-export const { setProducts } = basketSlice.actions;
+export const { setProducts,deleteProducts } = basketSlice.actions;
 
 export default basketSlice.reducer;
