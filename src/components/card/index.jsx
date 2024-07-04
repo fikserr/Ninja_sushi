@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./card.module.scss";
 import classNames from "classnames";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
+import { setProducts } from "../../store/basket";
 
 
 function Card({ data }) {
-  const {basket } = useSelector(state => state.basketData)
   const dispatch = useDispatch()
   const [pepper, setPepper] = useState(false);
   const [blackmarks, setBlackmarks] = useState(false);
@@ -13,10 +13,10 @@ function Card({ data }) {
   const statusHit = data.status?.filter(item => item == 'hit');
   const statusNew = data.status?.filter(item => item == 'new')
   const word = data.incredients?.join(', ')
-    console.log(basket);
-  function sendData(e) {
-    dispatch({payload:e})
-  }
+  
+  const handleCardData = (el) => {
+    dispatch(setProducts(el));
+};
 
   useEffect(() => {
     if (data.catalog?.some(ingredient => ingredient === 'Острые')) {
@@ -110,7 +110,7 @@ function Card({ data }) {
                 />
               </svg>
             </button>
-            <button className={styles.card__bottom_firstplus} onClick={() => sendData(data?.id)}>
+            <button className={styles.card__bottom_firstplus} onClick={()=>handleCardData(data)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9987 4.66797C14.643 4.66797 15.1654 5.1903 15.1654 5.83464V22.168C15.1654 22.8123 14.643 23.3346 13.9987 23.3346C13.3544 23.3346 12.832 22.8123 12.832 22.168V5.83464C12.832 5.1903 13.3544 4.66797 13.9987 4.66797Z" fill="#00CC2D"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M4.66797 13.9987C4.66797 13.3544 5.1903 12.832 5.83464 12.832H22.168C22.8123 12.832 23.3346 13.3544 23.3346 13.9987C23.3346 14.643 22.8123 15.1654 22.168 15.1654H5.83464C5.1903 15.1654 4.66797 14.643 4.66797 13.9987Z" fill="#00CC2D"/>

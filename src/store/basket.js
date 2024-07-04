@@ -1,16 +1,17 @@
 // store/dataSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  basket: []
+};
+
 const basketSlice = createSlice({
   name: 'basket',
-  initialState: {
-    basket: [],
-  },
+  initialState,
   reducers: {
     
     setProducts(state, action) {
-      console.log(state.basket);
-      state.basket = action.payload.id;
+      state.basket.push({...action.payload,quanity:1,like:false})
     },
   },
 });
