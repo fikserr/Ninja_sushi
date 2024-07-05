@@ -1,11 +1,15 @@
 import { NavLink } from 'react-router-dom'
 import Container from '../../layout/container'
 import styles from './basket.module.scss'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
+import { deleteProducts,addOne } from '../../store/basket'
 
 function Basket() {
   const { basket } = useSelector((state) => state.basketData)
+  const dispatch = useDispatch()
+  const delProduct = (dataId) => dispatch(deleteProducts(dataId))
+  const addPlus = (plusId) => dispatch(addOne(plusId))
   console.log(basket);
   return (
     <div className={styles.basket}>
@@ -22,8 +26,6 @@ function Basket() {
               </svg>
             </NavLink>
           </div>
-
-
           <div className={basket.length == 0 ? styles.basket__error : classNames(styles.basket__error, styles.active)}>
             <div className={styles.basket__basket}>
               <svg xmlns="http://www.w3.org/2000/svg" width="105" height="121" viewBox="0 0 105 121" fill="none">
@@ -45,7 +47,7 @@ function Basket() {
             {basket.map((item) => (
 
               <div className={styles.basket__products_item} key={item.id}>
-                <button className={styles.basket__products_delete}>
+                <button className={styles.basket__products_delete} onClick={()=>delProduct(item.id)}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2547 4.24371C13.5172 4.50616 13.5172 4.93168 13.2547 5.19412L5.19022 13.2586C4.92777 13.5211 4.50225 13.5211 4.23981 13.2586C3.97736 12.9962 3.97736 12.5707 4.23981 12.3082L12.3043 4.24371C12.5668 3.98126 12.9923 3.98126 13.2547 4.24371Z" fill="#1D1D1F" />
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.23981 4.24371C4.50225 3.98126 4.92777 3.98126 5.19022 4.24371L13.2547 12.3082C13.5172 12.5707 13.5172 12.9962 13.2547 13.2586C12.9923 13.5211 12.5668 13.5211 12.3043 13.2586L4.23981 5.19412C3.97736 4.93168 3.97736 4.50616 4.23981 4.24371Z" fill="#1D1D1F" />
@@ -64,7 +66,7 @@ function Basket() {
                   <div>
                     <button className={styles.basket__products_minus}>-</button>
                     <p className={styles.basket__products_quanity}>{item.quanity}</p>
-                    <button className={styles.basket__products_plus}>+</button>
+                    <button className={styles.basket__products_plus} onClick={()=>addPlus(item.id)}>+</button>
                   </div>
                 </div>
 
