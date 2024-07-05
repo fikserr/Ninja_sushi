@@ -3,13 +3,14 @@ import Container from '../../layout/container'
 import styles from './basket.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
-import { deleteProducts,addOne } from '../../store/basket'
+import { deleteProducts,addOne, removeOne } from '../../store/basket'
 
 function Basket() {
   const { basket } = useSelector((state) => state.basketData)
   const dispatch = useDispatch()
   const delProduct = (dataId) => dispatch(deleteProducts(dataId))
   const addPlus = (plusId) => dispatch(addOne(plusId))
+  const minusOne = (minusId) => dispatch(removeOne(minusId))
   console.log(basket);
   return (
     <div className={styles.basket}>
@@ -64,8 +65,8 @@ function Basket() {
                 <div className={styles.basket__products_right}>
                   <p className={styles.basket__products_price}>{item.price} грн</p>
                   <div>
-                    <button className={styles.basket__products_minus}>-</button>
-                    <p className={styles.basket__products_quanity}>{item.quanity}</p>
+                    <button className={styles.basket__products_minus} onClick={()=>minusOne(item.id)}>-</button>
+                    <p className={styles.basket__products_quanity}>{item.quantity}</p>
                     <button className={styles.basket__products_plus} onClick={()=>addPlus(item.id)}>+</button>
                   </div>
                 </div>
