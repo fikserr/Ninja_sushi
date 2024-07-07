@@ -115,6 +115,9 @@
             background: #F5F5F7;
             border: none;
             cursor: pointer;
+            &.active{
+                background:#F63;
+            }
         }
         &_firstplus{
             border-radius: 12px;

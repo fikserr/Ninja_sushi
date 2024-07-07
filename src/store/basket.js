@@ -10,7 +10,12 @@ const basketSlice = createSlice({
   reducers: {
     
     setProducts(state, action) {
-      state.basket.push({...action.payload,quantity:1,like:false})
+      const existingItem = state.basket.find(item => item.id === action.payload.id);
+      if (!existingItem) {
+        state.basket.push({...action.payload,quantity:1})
+      } else {
+        state.basket
+      }
     },
     deleteProducts(state,action){
       state.basket = state.basket.filter(item => item.id !== action.payload)
@@ -29,14 +34,11 @@ const basketSlice = createSlice({
         }
       });
     },
-    setLike(state,action){
-      state.basket = state.basket.map(item => item.id === action.payload ? {...item, like: !item.like} : {...item});
-    },
     
   },
 });
 
-export const { setProducts,deleteProducts,addOne,removeOne,setLike } = basketSlice.actions;
+export const { setProducts,deleteProducts,addOne,removeOne } = basketSlice.actions;
 
 export default basketSlice.reducer;
 

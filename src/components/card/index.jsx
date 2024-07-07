@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./card.module.scss";
 import classNames from "classnames";
 import { useDispatch} from "react-redux";
-import { setLike, setProducts } from "../../store/basket";
+import { setProducts } from "../../store/basket";
 
 
 function Card({ data }) {
@@ -15,7 +15,6 @@ function Card({ data }) {
   const word = data.incredients?.join(', ')
   
   const handleCardData = (el) => dispatch(setProducts(el));
-  const like = (likeId) => dispatch(setLike(likeId));
 
 
   useEffect(() => {
@@ -94,7 +93,7 @@ function Card({ data }) {
           </p>
 
           <div>
-            <button className={styles.card__bottom_like } onClick={()=>like(data.id)}>
+            <button className={styles.card__bottom_like } >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
