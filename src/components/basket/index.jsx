@@ -6,12 +6,13 @@ import classNames from 'classnames'
 import { deleteProducts,addOne, removeOne } from '../../store/basket'
 
 function Basket() {
-  const { basket } = useSelector((state) => state.basketData)
+  const { basket,total} = useSelector((state) => state.basketData)
   const dispatch = useDispatch()
   const delProduct = (dataId) => dispatch(deleteProducts(dataId))
   const addPlus = (plusId) => dispatch(addOne(plusId))
   const minusOne = (minusId) => dispatch(removeOne(minusId))
-  console.log(basket);
+  const ids = basket.map(item => item.id );
+  console.log(ids);
   return (
     <div className={styles.basket}>
       <Container className={styles.basket__container}>
@@ -79,7 +80,7 @@ function Basket() {
             <div className={basket.length == 0 ? classNames(styles.basket__bottom,styles.active) : styles.basket__bottom}>
                   <div>
                       <p className={styles.basket__bottom_total}>Итого:</p>
-                      <p className={styles.basket__bottom_price}>643<span>грн</span></p>
+                      <p className={styles.basket__bottom_price}>{total}<span>грн</span></p>
                   </div>
                   
                   <button className={styles.basket__bottom_btn}>Оформить заказ</button>

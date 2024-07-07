@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  basket: []
+  basket: [],
+  total: 0,
+};
+
+const calculateTotalPrice = (basket) => {
+  return basket.reduce((total, item) => total + item.price, 0);
 };
 
 const basketSlice = createSlice({
@@ -16,23 +21,33 @@ const basketSlice = createSlice({
       } else {
         state.basket
       }
+      state.total = calculateTotalPrice(state.basket);
     },
     deleteProducts(state,action){
       state.basket = state.basket.filter(item => item.id !== action.payload)
+      state.total = calculateTotalPrice(state.basket);
     },
-    addOne(state,action) {
-      state.basket.forEach(item => {
-        if (item.id === action.payload ) {
-          item.quantity++ ;
+    addOne(state, action) {
+      state.basket = state.basket.map(item => {
+        if (item.id === action.payload) {
+          const newQuantity = item.quantity + 1;
+          return { ...item, quantity: newQuantity, price: item.price / item.quantity * newQuantity };
         }
+
+        return item;
       });
+      state.total = calculateTotalPrice(state.basket);
+
     },
-    removeOne(state,action) {
-      state.basket.forEach(item => {
+    removeOne(state, action) {
+      state.basket = state.basket.map(item => {
         if (item.id === action.payload && item.quantity > 1) {
-          item.quantity-- ;
+          const newQuantity = item.quantity - 1;
+          return { ...item, quantity: newQuantity, price: item.price / item.quantity * newQuantity };
         }
+        return item;
       });
+      state.total = calculateTotalPrice(state.basket);
     },
     
   },
