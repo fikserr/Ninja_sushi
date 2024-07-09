@@ -1,8 +1,31 @@
+// store/dataSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+// Basketni localStorage'dan o'qish uchun funksiya
+const loadStateFromLocalStorage = () => {
+  try {
+    const serializedState = localStorage.getItem('basketState');
+    return serializedState ? JSON.parse(serializedState) : undefined;
+  } catch (e) {
+    console.warn('Could not load state from localStorage', e);
+    return undefined;
+  }
+};
+
+// Basketni localStorage'ga saqlash uchun funksiya
+const saveStateToLocalStorage = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('basketState', serializedState);
+  } catch (e) {
+    console.warn('Could not save state to localStorage', e);
+  }
+};
+
+const initialState = loadStateFromLocalStorage() || {
   basket: [],
-  total: 0,
+  activeLike: [],
+  totalPrice: 0
 };
 
 const calculateTotalPrice = (basket) => {
@@ -11,50 +34,55 @@ const calculateTotalPrice = (basket) => {
 
 const basketSlice = createSlice({
   name: 'basket',
-  initialState,
+  initialState: initialState,
   reducers: {
-    
     setProducts(state, action) {
       const existingItem = state.basket.find(item => item.id === action.payload.id);
       if (!existingItem) {
-        state.basket.push({...action.payload,quantity:1})
-      } else {
-        state.basket
+        state.basket.push({ ...action.payload, quantity: 1, like: false });
       }
-      state.total = calculateTotalPrice(state.basket);
+      state.totalPrice = calculateTotalPrice(state.basket);
+      saveStateToLocalStorage(state);
     },
-    deleteProducts(state,action){
-      state.basket = state.basket.filter(item => item.id !== action.payload)
-      state.total = calculateTotalPrice(state.basket);
+    deleteProducts(state, action) {
+      state.basket = state.basket.filter(item => item.id !== action.payload);
+      state.totalPrice = calculateTotalPrice(state.basket);
+      saveStateToLocalStorage(state);
+      
+      state.activeLike = state.activeLike.filter(item => item.id !== action.payload);
     },
     addOne(state, action) {
       state.basket = state.basket.map(item => {
         if (item.id === action.payload) {
           const newQuantity = item.quantity + 1;
-          return { ...item, quantity: newQuantity, price: item.price / item.quantity * newQuantity };
+          return { ...item, quantity: newQuantity, price: (item.price / item.quantity) * newQuantity };
         }
-
         return item;
       });
-      state.total = calculateTotalPrice(state.basket);
-
+      state.totalPrice = calculateTotalPrice(state.basket);
+      saveStateToLocalStorage(state);
     },
     removeOne(state, action) {
       state.basket = state.basket.map(item => {
         if (item.id === action.payload && item.quantity > 1) {
           const newQuantity = item.quantity - 1;
-          return { ...item, quantity: newQuantity, price: item.price / item.quantity * newQuantity };
+          return { ...item, quantity: newQuantity, price: (item.price / item.quantity) * newQuantity };
         }
         return item;
       });
-      state.total = calculateTotalPrice(state.basket);
+      state.totalPrice = calculateTotalPrice(state.basket);
+      saveStateToLocalStorage(state);
     },
-    
+    setLike(state, action) {
+      const existingItem = state.activeLike.find(item => item.id === action.payload.id);
+      if (!existingItem) {
+        state.activeLike.push({ ...action.payload, like: true });
+      }
+      saveStateToLocalStorage(state);
+    }
   },
 });
 
-export const { setProducts,deleteProducts,addOne,removeOne } = basketSlice.actions;
+export const { setProducts, deleteProducts, addOne, removeOne, setLike } = basketSlice.actions;
 
 export default basketSlice.reducer;
-
-

@@ -13,7 +13,7 @@ function Card({ data }) {
   const statusHit = data.status?.filter(item => item == 'hit');
   const statusNew = data.status?.filter(item => item == 'new')
   const word = data.incredients?.join(', ')
-  
+  const activeData =  localStorage.getItem('basketState')
   const handleCardData = (el) => dispatch(setProducts(el));
 
 
@@ -93,7 +93,7 @@ function Card({ data }) {
           </p>
 
           <div>
-            <button className={styles.card__bottom_like } >
+            <button className={{...activeData,like} || {...active,id} == data.id ? classNames(styles.card__bottom_like,styles.active) : styles.card__bottom_like } >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
