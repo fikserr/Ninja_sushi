@@ -8,9 +8,27 @@ import sir from '../../images/sir.png'
 import tunech from '../../images/tunech.png'
 import tofu from '../../images/tofu.png'
 import ugor from '../../images/ugor.png'
+import { useEffect, useState } from "react";
+import classNames from "classnames";
+import { useSelector } from "react-redux";
 
 function Filter() {
-  return (
+  const [filter,setFilter] = useState(false)
+  const { products} = useSelector((state) => state.data);
+  const [searchIngredient, setSearchIngredient] = useState(''); 
+
+  const filterProductsByIngredient = (ingredient) => {
+    return products?.filter(product => 
+      product.incredients?.some(ing => ing.toLowerCase() === ingredient.toLowerCase())
+    );
+  };
+
+  const filteredProducts = filterProductsByIngredient(searchIngredient);
+  console.log(searchIngredient);
+  useEffect(()=>{
+
+  },[searchIngredient])
+  return (  
     <div className={styles.filter}>
       <div className={styles.filter__top}>
         <div>
@@ -94,11 +112,11 @@ function Filter() {
         </div>
 
         <div className={styles.filter__catalog}>
-          <button className={styles.filter__catalog_btn}><img src={lasos} alt="image" />Лосось</button>
+          <button className={styles.filter__catalog_btn} onClick={()=>setSearchIngredient("Лосось" + searchIngredient)}><img src={lasos} alt="image" />Лосось</button>
           <button className={styles.filter__catalog_btn}><img src={ugor} alt="image" />Угорь</button>
           <button className={styles.filter__catalog_btn}><img src={tunech} alt="image" />Тунец</button>
           <button className={styles.filter__catalog_btn}><img src={file} alt="image" />Куриное филе</button>
-          <button className={styles.filter__catalog_btn}>
+          <button className={filter ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={()=>setFilter(!filter)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -121,14 +139,14 @@ function Filter() {
             </svg>
           </button>
         </div>
-        <div className={styles.filter__ingrident}>
+        <div className={ filter ? classNames( styles.filter__ingrident,styles.active ): styles.filter__ingrident}>
           <div className={styles.filter__ingrident_top}>
             <h3 className={styles.filter__ingrident_top_title}>Инградиенты</h3>
             <div>
               <button className={styles.filter__ingrident_top_reset}>
                 Сбросить все
               </button>
-              <button className={styles.filter__ingrident_top_cancel}>
+              <button className={styles.filter__ingrident_top_cancel} onClick={()=>setFilter(!filter)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"

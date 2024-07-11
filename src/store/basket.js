@@ -24,7 +24,8 @@ const saveStateToLocalStorage = (state) => {
 const initialState = loadStateFromLocalStorage() || {
   basket: [],
   activeLike: [],
-  totalPrice: 0
+  totalPrice: 0,
+  detailId: [],
 };
 
 const calculateTotalPrice = (basket) => {
@@ -83,10 +84,13 @@ const basketSlice = createSlice({
 
 
       saveStateToLocalStorage(state);
+    },
+    setDetail(state,action){
+      state.detailId = action.payload
     }
   },
 });
 
-export const { setProducts, deleteProducts, addOne, removeOne, setLike } = basketSlice.actions;
+export const { setProducts, deleteProducts, addOne, removeOne, setLike,setDetail } = basketSlice.actions;
 
 export default basketSlice.reducer;
