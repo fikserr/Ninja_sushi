@@ -5,6 +5,7 @@ import Card from '../card';
 import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '../../store/dataSlice';
 import { useNavigate } from 'react-router-dom'
+import Filter from '../filter';
 
 function Sushi() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function Sushi() {
           <h1 className={styles.sushi__title}>Суши</h1>
           <button className={styles.sushi__button} onClick={() => setSeeAll(96)}>Смотреть все</button>
         </div>
+        <Filter/> 
         <div className={styles.sushi__cards}>
           {
             products.slice(85, seeAll).map((item) => (

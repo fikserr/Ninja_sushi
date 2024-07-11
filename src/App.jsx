@@ -15,6 +15,7 @@ import Sets from './components/sets'
 import Souses from './components/souses'
 import Error from './pages/error'
 import Scroll from './Scroll'
+import Detail from './components/detail'
 
 
 
@@ -33,6 +34,7 @@ function App() {
                 <Route path="snacks" element={<Snacks/>}/>
                 <Route path="beverages" element={<Beverages/>}/>
                 <Route path="souses" element={<Souses/>}/>
+                
               </Route>
               <Route path="order" element={<Order/>}/>
               <Route path="about" element={<Contract/>}/>
@@ -41,6 +43,7 @@ function App() {
               <Route path='basket' element={<Basket/>}/>
               <Route path='notification' element={<Notification/>}/>
               <Route path='error' element={<Error/>}/>
+              <Route path='detail/:id' element={<Detail/>}/>
             </Routes>
           
 

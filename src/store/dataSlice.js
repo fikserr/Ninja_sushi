@@ -22,12 +22,18 @@ const initialState = {
     news: null,
     products: null,
     error: null,
+    detailId: [],
 };
 
 const dataSlice = createSlice({
     name: "data",
     initialState: initialState,
-    reducers: {}, 
+    reducers: {
+        sendDetail(state,action){
+            const product = state.products.filter(item =>  action.payload == item.id);
+            state.detailId.push(product)
+        },
+    }, 
     extraReducers: (builder) => {
         builder
             .addCase(getData.fulfilled, (state, action) => {
@@ -39,5 +45,7 @@ const dataSlice = createSlice({
             });
     }
 });
+
+export const { sendDetail } = dataSlice.actions;
 
 export default dataSlice.reducer;

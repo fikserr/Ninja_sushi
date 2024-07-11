@@ -1,0 +1,123 @@
+.filter{
+    width: 100%;
+    padding-bottom: 24px;
+
+    &__top{
+        display: flex;
+        justify-content: space-between;
+        & div{
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            .filter__buttons{
+                background: white;
+                padding: 16px;
+                color: #1D1D1F;
+                font-family: 'Inter';
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 24px;
+                border-radius: 12px;
+                border: none;
+                &.active{
+                    color: white;
+                    background: #F63;
+                }
+            }
+        }
+        &_text{
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            color:  #1D1D1F;
+            font-family: Inter;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px; 
+        }
+    }
+   
+    &__bottom{
+        display: flex;
+        justify-content: space-between;
+        padding-top: 24px;
+        position: relative;
+    }
+    &__catalog{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+        &_btn{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 12px;
+            background: #FFF;
+            padding: 16px;
+            border: none;
+            color:  #1D1D1F;
+            font-family: 'Inter';
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px; 
+            &.active{
+                border: 2px solid #EB5757;
+            }
+        }
+    }
+
+    &__ingrident{
+        display: none;
+        flex-direction: column;
+        padding: 24px;
+        width: 846px;
+        position: absolute;
+        right: 0;
+        bottom: -290px;
+        border-radius: 12px;
+        background: #FFF;
+        box-shadow: 0px 6px 20px 0px rgba(29, 29, 31, 0.07);
+        &.active{
+            display: flex;
+        }
+        &_top{
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 24px;
+            &_title{
+                color:  #1D1D1F;
+                font-family: 'Inter';
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 30px; 
+            }
+            & div{
+                display: flex;
+                gap: 20px;
+            }
+            &_reset{
+                color: #F63;
+                font-family: 'Inter';
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 24px; 
+                border: none;
+                background: none;
+            }
+            &_cancel{
+                padding: 6px;   
+                border-radius: 8px;
+                background:#F5F5F7;
+                border: none;
+            }
+        }
+        .filter__catalog_btn{
+            border: 1px solid  #D2D2D7;
+            display: flex;
+            gap: 8px;
+
+        }
+    }
+}

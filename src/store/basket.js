@@ -1,7 +1,7 @@
-// store/dataSlice.js
+
 import { createSlice } from '@reduxjs/toolkit';
 
-// Basketni localStorage'dan o'qish uchun funksiya
+
 const loadStateFromLocalStorage = () => {
   try {
     const serializedState = localStorage.getItem('basketState');
@@ -12,7 +12,6 @@ const loadStateFromLocalStorage = () => {
   }
 };
 
-// Basketni localStorage'ga saqlash uchun funksiya
 const saveStateToLocalStorage = (state) => {
   try {
     const serializedState = JSON.stringify(state);
@@ -39,7 +38,7 @@ const basketSlice = createSlice({
     setProducts(state, action) {
       const existingItem = state.basket.find(item => item.id === action.payload.id);
       if (!existingItem) {
-        state.basket.push({ ...action.payload, quantity: 1, like: false });
+        state.basket.push({ ...action.payload, quantity: 1 });
       }
       state.totalPrice = calculateTotalPrice(state.basket);
       saveStateToLocalStorage(state);
@@ -48,8 +47,7 @@ const basketSlice = createSlice({
       state.basket = state.basket.filter(item => item.id !== action.payload);
       state.totalPrice = calculateTotalPrice(state.basket);
       saveStateToLocalStorage(state);
-      
-      state.activeLike = state.activeLike.filter(item => item.id !== action.payload);
+
     },
     addOne(state, action) {
       state.basket = state.basket.map(item => {
@@ -74,10 +72,16 @@ const basketSlice = createSlice({
       saveStateToLocalStorage(state);
     },
     setLike(state, action) {
+
       const existingItem = state.activeLike.find(item => item.id === action.payload.id);
       if (!existingItem) {
-        state.activeLike.push({ ...action.payload, like: true });
+        state.activeLike.push({ ...action.payload, like: true});
+      }else if (existingItem) {
+        state.activeLike = state.activeLike.filter(item => item.id !== action.payload.id)
       }
+      
+
+
       saveStateToLocalStorage(state);
     }
   },
