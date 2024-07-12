@@ -24,10 +24,7 @@ function Filter() {
   };
 
   const filteredProducts = filterProductsByIngredient(searchIngredient);
-  console.log(searchIngredient);
-  useEffect(()=>{
-
-  },[searchIngredient])
+  console.log(filteredProducts);
   return (  
     <div className={styles.filter}>
       <div className={styles.filter__top}>
@@ -113,7 +110,7 @@ function Filter() {
 
         <div className={styles.filter__catalog}>
           <button className={styles.filter__catalog_btn} onClick={()=>setSearchIngredient("Лосось" + searchIngredient)}><img src={lasos} alt="image" />Лосось</button>
-          <button className={styles.filter__catalog_btn}><img src={ugor} alt="image" />Угорь</button>
+          <button className={styles.filter__catalog_btn}  onClick={()=>setSearchIngredient("Тунец" + searchIngredient)}><img src={ugor} alt="image" />Угорь</button>
           <button className={styles.filter__catalog_btn}><img src={tunech} alt="image" />Тунец</button>
           <button className={styles.filter__catalog_btn}><img src={file} alt="image" />Куриное филе</button>
           <button className={filter ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={()=>setFilter(!filter)}>

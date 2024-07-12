@@ -29,8 +29,8 @@ function Detail() {
 
                     <div className={styles.detail__right}>
                       <div className={styles.detail__images}>
-                        <p className={classNames(styles.detail__images_hit, item?.status[0] == "hit" ? styles.active : "")}>{item.status[0]}</p>
-                        <p className={classNames(styles.detail__images_new, item?.status[1] == "new" ? styles.active : "")}>{item.status[1]}</p>
+                        <p className={classNames(styles.detail__images_hit, item.status && item.status[0] === "hit" ? styles.active : "")}>{item.status ? item.status[0] : ""}</p>
+                        <p className={classNames(styles.detail__images_new, item.status && item.status[1] === "new" ? styles.active : "")}>{item.status ? item.status[1] : ""}</p>
                       </div>
                       <h1 className={styles.detail__title}>{item.name}</h1>
                       <p className={styles.detail__weight}>Вес: {item.weight}</p>

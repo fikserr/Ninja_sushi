@@ -12,7 +12,16 @@ function Sushi() {
   const {products,error} = useSelector(state => state.data);
   const [seeAll, setSeeAll] = useState(93);
   const navigate = useNavigate()
-  
+  const [searchIngredient, setSearchIngredient] = useState(''); 
+
+  const filterProductsByIngredient = (ingredient) => {
+    return products?.filter(product => 
+      product.incredients?.some(ing => ing.toLowerCase() === ingredient.toLowerCase())
+    );
+  };
+
+  const filteredProducts = filterProductsByIngredient(searchIngredient);
+  console.log(filteredProducts);
   useEffect(() => {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
   }, [dispatch,error]);
