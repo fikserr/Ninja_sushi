@@ -8,25 +8,34 @@ import sir from '../../images/sir.png'
 import tunech from '../../images/tunech.png'
 import tofu from '../../images/tofu.png'
 import ugor from '../../images/ugor.png'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import classNames from "classnames";
-import { useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
+import { filterCatalog, filterIngredient,} from "../../store/dataSlice";
+import { useLocation } from "react-router";
+
 
 function Filter() {
   const [filter,setFilter] = useState(false)
-  const { products} = useSelector((state) => state.data);
-  const [searchIngredient, setSearchIngredient] = useState(''); 
+  const dispatch = useDispatch()
+  const {pathname} = useLocation()
+  const [activeIng,setActiveIng] = useState('')
+  const [activeCatalog,setActiveCatalog] = useState('')
 
-  const filterProductsByIngredient = (ingredient) => {
-    return products?.filter(product => 
-      product.incredients?.some(ing => ing.toLowerCase() === ingredient.toLowerCase())
-    );
+  const handleFilter = (el) => {
+    dispatch(filterIngredient(el.toLowerCase()));
+    setActiveIng(el)
+  };
+  const handleFilterCategory = (category) => {
+    dispatch(filterCatalog(category.toLowerCase()));
+    setActiveCatalog(category)
   };
 
-  const filteredProducts = filterProductsByIngredient(searchIngredient);
-  console.log(filteredProducts);
+
+
+  console.log(activeIng);
   return (  
-    <div className={styles.filter}>
+    <div className={ pathname == '/rolls' || pathname == '/sushi' || pathname == '/sets' || pathname == '/snacks' ? classNames(styles.filter,styles.active) : styles.filter}>
       <div className={styles.filter__top}>
         <div>
           <button className={styles.filter__buttons}>Все</button>
@@ -59,7 +68,7 @@ function Filter() {
 
       <div className={styles.filter__bottom}>
         <div className={styles.filter__catalog}>                                                                                
-          <button className={styles.filter__catalog_btn}>
+          <button className={activeCatalog == 'Острые' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilterCategory(e.target.textContent)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="26"
@@ -74,7 +83,7 @@ function Filter() {
             </svg>
             Острые
           </button>
-          <button className={styles.filter__catalog_btn}>
+          <button className={activeCatalog == 'Вегетарианские' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilterCategory(e.target.textContent)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="26"
@@ -89,7 +98,7 @@ function Filter() {
             </svg>
             Вегетарианские
           </button>
-          <button className={styles.filter__catalog_btn}>
+          <button className={activeCatalog == 'Безлактозные' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilterCategory(e.target.textContent)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -109,10 +118,10 @@ function Filter() {
         </div>
 
         <div className={styles.filter__catalog}>
-          <button className={styles.filter__catalog_btn} onClick={()=>setSearchIngredient("Лосось" + searchIngredient)}><img src={lasos} alt="image" />Лосось</button>
-          <button className={styles.filter__catalog_btn}  onClick={()=>setSearchIngredient("Тунец" + searchIngredient)}><img src={ugor} alt="image" />Угорь</button>
-          <button className={styles.filter__catalog_btn}><img src={tunech} alt="image" />Тунец</button>
-          <button className={styles.filter__catalog_btn}><img src={file} alt="image" />Куриное филе</button>
+          <button className={activeIng == 'Лосось' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={lasos} alt="image" />Лосось</button>
+          <button className={activeIng == 'Угорь' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn}  onClick={(e)=>handleFilter(e.target.textContent)}><img src={ugor} alt="image" />Угорь</button>
+          <button className={activeIng == 'Тунец' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={tunech} alt="image" />Тунец</button>
+          <button className={activeIng == 'Куриное филе' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={file} alt="image" />Куриное филе</button>
           <button className={filter ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={()=>setFilter(!filter)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -169,15 +178,15 @@ function Filter() {
           </div>
 
           <div className={styles.filter__catalog}>
-            <button className={styles.filter__catalog_btn}><img src={lasos} alt="image" />Лосось</button>
-            <button className={styles.filter__catalog_btn}><img src={ugor} alt="image" />Угорь</button>
-            <button className={styles.filter__catalog_btn}><img src={tunech} alt="image" />Тунец</button>
-            <button className={styles.filter__catalog_btn}><img src={file} alt="image" />Куриное филе</button>
-            <button className={styles.filter__catalog_btn}><img src={tofu} alt="image" />Тофу</button>
-            <button className={styles.filter__catalog_btn}><img src={sir} alt="image" />Сливочный сыр</button>
-            <button className={styles.filter__catalog_btn}><img src={avakado} alt="image" />Авокадо</button>
-            <button className={styles.filter__catalog_btn}><img src={pomidor} alt="image" />Помидор</button>
-            <button className={styles.filter__catalog_btn}><img src={grib} alt="image" />Гриб шитаки</button>
+            <button className={activeIng == 'Лосось' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={lasos} alt="image" />Лосось</button>
+            <button className={activeIng == 'Угорь' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={ugor} alt="image" />Угорь</button>
+            <button className={activeIng == 'Тунец' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={tunech} alt="image" />Тунец</button>
+            <button className={activeIng == 'Куриное филе' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={file} alt="image" />Куриное филе</button>
+            <button className={activeIng == 'Тофу' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={tofu} alt="image" />Тофу</button>
+            <button className={activeIng == 'Сливочный сыр' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={sir} alt="image" />Сливочный сыр</button>
+            <button className={activeIng == 'Авокадо' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={avakado} alt="image" />Авокадо</button>
+            <button className={activeIng == 'Помидор' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={pomidor} alt="image" />Помидор</button>
+            <button className={activeIng == 'Гриб шитаки' ? classNames(styles.filter__catalog_btn,styles.active) : styles.filter__catalog_btn} onClick={(e)=>handleFilter(e.target.textContent)}><img src={grib} alt="image" />Гриб шитаки</button>
           </div>
         </div>
       </div>

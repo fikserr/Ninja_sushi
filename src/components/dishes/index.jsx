@@ -8,16 +8,17 @@ import { useNavigate } from 'react-router'
 
 function Dishes() {
   const dispatch = useDispatch();
-  const {products,error} = useSelector(state => state.data);
-  const [seeAll, setSeeAll] = useState(153);
+  const {dishes,error} = useSelector(state => state.data);
+  const [seeAll, setSeeAll] = useState(11);
   const navigate = useNavigate()
-
   useEffect(() => {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
   }, [dispatch,error]);
-  
+  useEffect(() => {
+    
+  }, [dishes]);
 
-  if (error || !products) return navigate('/error');
+  if (error || !dishes) return navigate('/error');
     return (
       <div className={styles.dishes}>
         <Container className={styles.dishes__container}>
@@ -32,7 +33,7 @@ function Dishes() {
   
   
              {
-                products?.slice(145,seeAll).map((item) => (
+                dishes?.slice(1,seeAll).map((item) => (
                     <Card key={item.id} data={item}/>
                 ))
               } 

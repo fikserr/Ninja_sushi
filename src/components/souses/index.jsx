@@ -8,16 +8,18 @@ import { useNavigate } from 'react-router'
 
 function Souses() {
   const dispatch = useDispatch();
-  const {products,error} = useSelector(state => state.data);
-  const [seeAll, setSeeAll] = useState(120);
+  const {souses,error} = useSelector(state => state.data);
+  const [seeAll, setSeeAll] = useState(8);
   const navigate = useNavigate()
-
   useEffect(() => {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
   }, [dispatch,error]);
   
+  useEffect(() => {
+    
+  }, [souses]);
 
-  if (error || !products) return navigate('/error');
+  if (error || !souses) return navigate('/error');
     return (
       <div className={styles.souses}>
         <Container className={styles.souses__container}>
@@ -25,14 +27,14 @@ function Souses() {
   
             <h1 className={styles.souses__title}>Напитки</h1>
   
-            <button className={styles.souses__button} onClick={()=> setSeeAll(120)}>Смотреть все</button>
+            <button className={styles.souses__button} onClick={()=> setSeeAll(8)}>Смотреть все</button>
             </div>
   
             <div className={styles.souses__cards}>
   
   
              {
-                products?.slice(113,seeAll).map((item) => (
+                souses?.slice(1,seeAll).map((item) => (
                     <Card key={item.id} data={item}/>
                 ))
               } 

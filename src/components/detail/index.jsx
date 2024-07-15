@@ -12,10 +12,8 @@ function Detail() {
   const {products} = useSelector(state => state.data)
   const dispatch = useDispatch()
   const {id} = useParams()
-  console.log(detailId);
   useEffect(()=>{
     dispatch(setDetail(products?.filter(item => item.id == id)))
-    console.log(detailId);
   },[id])
   return (
     <div className={styles.detail}>

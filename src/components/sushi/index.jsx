@@ -9,36 +9,33 @@ import Filter from '../filter';
 
 function Sushi() {
   const dispatch = useDispatch();
-  const {products,error} = useSelector(state => state.data);
-  const [seeAll, setSeeAll] = useState(93);
+  const {error,sushi} = useSelector(state => state.data);
+  const [seeAll, setSeeAll] = useState(8);
   const navigate = useNavigate()
-  const [searchIngredient, setSearchIngredient] = useState(''); 
-
-  const filterProductsByIngredient = (ingredient) => {
-    return products?.filter(product => 
-      product.incredients?.some(ing => ing.toLowerCase() === ingredient.toLowerCase())
-    );
-  };
-
-  const filteredProducts = filterProductsByIngredient(searchIngredient);
-  console.log(filteredProducts);
+  console.log(sushi);
   useEffect(() => {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
   }, [dispatch,error]);
+
+  useEffect(() => {
+    
+  }, [sushi]);
+
+
   
 
-  if (error || !products) return navigate('/error');
+  if (error || !sushi) return navigate('/error');
   return (
     <div className={styles.sushi}>
       <Container className={styles.sushi__container}>
         <div className={styles.sushi__content}>
           <h1 className={styles.sushi__title}>Суши</h1>
-          <button className={styles.sushi__button} onClick={() => setSeeAll(96)}>Смотреть все</button>
+          <button className={styles.sushi__button} onClick={() => setSeeAll(13)}>Смотреть все</button>
         </div>
         <Filter/> 
         <div className={styles.sushi__cards}>
           {
-            products.slice(85, seeAll).map((item) => (
+            sushi.slice(0,seeAll).map((item) => (
               <Card key={item.id} data={item} />
             ))
           }

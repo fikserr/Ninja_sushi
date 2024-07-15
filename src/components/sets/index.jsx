@@ -5,11 +5,12 @@ import styles from './sets.module.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '../../store/dataSlice';
 import { useNavigate } from 'react-router';
+import Filter from '../filter';
 
 
 function Sets() {
   const dispatch = useDispatch();
-  const {products,error} = useSelector(state => state.data);
+  const {set,error} = useSelector(state => state.data);
   const [seeAll, setSeeAll] = useState(8);
   const navigate = useNavigate()
 
@@ -17,8 +18,10 @@ function Sets() {
     dispatch(getData('https://fayzullaev99.github.io/sushi-data/data.json'));
   }, [dispatch,error]);
   
-
-  if (error || !products) return navigate('/error');
+  useEffect(() => {
+    
+  }, [set]);
+  if (error || !set) return navigate('/error');
   return (
     <div className={styles.sets}>
       <Container className={styles.sets__container}>
@@ -28,12 +31,12 @@ function Sets() {
 
           <button className={styles.sets__button} onClick={()=> setSeeAll(25)}>Смотреть все</button>
           </div>
-
+              <Filter/>
           <div className={styles.sets__cards}>
 
 
            {
-              products?.slice(0,seeAll).map((item) => (
+                set?.slice(0,seeAll).map((item) => (
                   <Card key={item.id} data={item}/>
               ))
             } 
