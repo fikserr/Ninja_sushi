@@ -17,6 +17,7 @@ import { useLocation } from "react-router";
 
 function Filter() {
   const [filter,setFilter] = useState(false)
+  const [activeType,setActiveType] = useState('Все')
   const dispatch = useDispatch()
   const {pathname} = useLocation()
   const [activeIng,setActiveIng] = useState('')
@@ -38,13 +39,13 @@ function Filter() {
     <div className={ pathname == '/rolls' || pathname == '/sushi' || pathname == '/sets' || pathname == '/snacks' ? classNames(styles.filter,styles.active) : styles.filter}>
       <div className={styles.filter__top}>
         <div>
-          <button className={styles.filter__buttons}>Все</button>
-          <button className={styles.filter__buttons}>Классические</button>
-          <button className={styles.filter__buttons}>Маки</button>
-          <button className={styles.filter__buttons}>Драконы</button>
-          <button className={styles.filter__buttons}>Запеченные</button>
-          <button className={styles.filter__buttons}>Феликсы</button>
-          <button className={styles.filter__buttons}>Сладкие</button>
+          <button className={activeType == 'Все' ? classNames(styles.filter__buttons,styles.active) : styles.filter__buttons} onClick={(e)=>setActiveType(e.target.textContent)}>Все</button>
+          <button className={activeType == 'Классические' ? classNames(styles.filter__buttons,styles.active) : styles.filter__buttons} onClick={(e)=>setActiveType(e.target.textContent)}>Классические</button>
+          <button className={activeType == 'Маки' ? classNames(styles.filter__buttons,styles.active) : styles.filter__buttons} onClick={(e)=>setActiveType(e.target.textContent)}>Маки</button>
+          <button className={activeType == 'Драконы' ? classNames(styles.filter__buttons,styles.active) : styles.filter__buttons} onClick={(e)=>setActiveType(e.target.textContent)}>Драконы</button>
+          <button className={activeType == 'Запеченные' ? classNames(styles.filter__buttons,styles.active) : styles.filter__buttons} onClick={(e)=>setActiveType(e.target.textContent)}>Запеченные</button>
+          <button className={activeType == 'Феликсы' ? classNames(styles.filter__buttons,styles.active) : styles.filter__buttons} onClick={(e)=>setActiveType(e.target.textContent)}>Феликсы</button>
+          <button className={activeType == 'Сладкие' ? classNames(styles.filter__buttons,styles.active) : styles.filter__buttons} onClick={(e)=>setActiveType(e.target.textContent)}>Сладкие</button>
         </div>
 
         <p className={styles.filter__top_text}>
